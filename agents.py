@@ -4,8 +4,10 @@ import google.generativeai as genai
 import os
 from tasks import CustomTasks
 from custom_tools import pdf_tool, txt_tool, json_tool, mdx_tool, file_read_tool
-genai.configure(api_key="AIzaSyB9CROn-mLS56zciR0q51G8OXMg1Oh0MSQ")
-
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=".env", verbose=True, override=True)
+google_api_key = os.environ.get('GOOGLE_API_KEY')
+genai.configure(api_key=google_api_key)
 
 class CustomAgents:
     def __init__(self):
